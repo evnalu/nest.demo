@@ -13,7 +13,6 @@ describe('User Api', () => {
       {
         username: 'demo',
         email: 'demo@gmail.com',
-        password: '123456',
       }
     );
     console.log(res.data);

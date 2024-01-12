@@ -12,4 +12,12 @@ export class UserService extends OrmService<UserModel> {
   ) {
     super(userModel);
   }
+
+  async getByUsername(username: string): Promise<UserModel> {
+    return this.userModel.findOne({
+      where: {
+        username
+      }
+    });
+  }
 }

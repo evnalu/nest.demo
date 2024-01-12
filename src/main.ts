@@ -1,15 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Logger } from '@evnalu/nest.common';
+import { Logger, ResponseCode } from '@evnalu/nest.common';
 import { json, urlencoded } from 'express';
 import { Config } from './config/configuration';
 import { AppModule } from './app.module';
-import { LoggingInterceptor, QueryHandlerInterceptor } from './shared/interceptors';
+import { LoggingInterceptor, QueryHandlerInterceptor, customTypes } from './shared';
 
 const { log, err } = Logger('main');
 
 async function bootstrap() {
+  ResponseCode.init(customTypes);
+
   const app = await NestFactory.create(AppModule);
   app.use(json({ limit: '64mb' }));
   app.useGlobalInterceptors(new QueryHandlerInterceptor());
