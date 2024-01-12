@@ -5,7 +5,7 @@ import { MongooseService, Logger } from '@evnalu/nest.common';
 import { Category, CategoryDocument } from '../schemas/category.schema';
 import { MongodbConnectionNames } from '../../../shared/constants';
 
-const { log, err } = Logger('user:services:user');
+const { log, err } = Logger('category:services:category');
 
 @Injectable()
 export class CategoryService extends MongooseService<CategoryDocument> {
